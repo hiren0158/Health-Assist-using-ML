@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Hospitals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('BG.jpg');
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            background-color: #3ccaca;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            display: inline-block;
+            padding: 5px 10px;
+            color: #fff;
+            background-color: transparent;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            background-color: #fff;
+            color: #3ccaca;
+            border-color: #3ccaca;
+        }
+
+        main {
+            background-color: rgba(204, 232, 234, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 700px;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #67deee;
+            background-color: rgba(152, 200, 203, 0.9);
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .hospital-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .hospital-item h4 {
+            margin: 0;
+            color: #007bff;
+        }
+
+        .view-map-btn {
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 14px;
+            color: white;
+            background-color: #3ccaca;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-map-btn:hover {
+            background-color: #2aa5a5;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>HealthAssist - Emergency Hospitals</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="checkup.html">Doctors</a>
+            <a href="medicine.html">Medicine</a>
+        </nav>
+    </header>
+    <main>
+        <h3>Select a City to View Emergency Hospitals</h3>
+        <select id="citySelect">
+            <option value="">Select City</option>
+            <option value="Surat">Surat</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Rajkot">Rajkot</option>
+            <option value="Jamnagar">Jamnagar</option>
+            <option value="Amreli">Amreli</option>
+            <option value="Junagadh">Junagadh</option>
+            <option value="Vadodara">Vadodara</option>
+            <option value="Anand">Anand</option>
+            <option value="Bhavnagar">Bhavnagar</option>
+        </select>
+        <button onclick="showHospitals()">Show Hospitals</button>
+
+        <div id="hospitalList" class="result"></div>
+
+        <h3>Emergency Contact</h3>
+        <p><strong>Ambulance Number (India):</strong> 108</p>
+        <p><strong>Emergency Info:</strong> In case of a medical emergency, call the ambulance number immediately. Keep calm and assist the patient until help arrives.</p>
+    </main>
+
+    <script>
+        const hospitals = {
+            Surat: [
+                { hospital: "Shalby Multi-Specialty Hospitals", name: "Dr. Raj Patel", address: "Nr. Navyug College, Rander Rd, Adajan, Surat, Gujarat 395009" }
+            ],
+            Ahmedabad: [
+                { hospital: "Apollo Hospital International Limited Ahmedabad", name: "Dr. Sobha Maheta", address: "Plot No, 1A, Gandhinagar - Ahmedabad Rd, GIDC Bhat, estate, Ahmedabad, Gujarat 382428" }
+            ],
+            Rajkot: [
+                { hospital: "Gokul Hospital", name: "Dr. Jignesh Patel", address: "14, Sadgurunagar, nr. Ranchhoddasbapu ashram, Kuvadava Rd, Rajkot, Gujarat 360003" }
+            ],
+            Jamnagar: [
+                { hospital: "Avadh Multispeciality Hospital", name: "Parth Shah", address: "behind Bank Of Baroda, Summair Club Road, Jamnagar, Gujarat 361005" }
+            ],
+            Amreli: [
+                { hospital: "BIMS Aastha Hospital Amreli", name: "Kinjal Vasani", address: "H6X9+228, B.M.CHOWK, Liliya Rd, Manekpara, Amreli, Gujarat 365601" }
+            ],
+            Junagadh: [
+                { hospital: "K J MULTISPECIALITY HOSPITAL", name: "Dr. Raj Parmar", address: "Near 9 Square Commercial Complex, Near Zanzarda, Cross Road Bypass Highway, Junagadh, Gujarat 362001" }
+            ],
+            Vadodara: [
+                { hospital: "SMS HOSPITAL VADODARA", name: "Dr. Reshma Dave", address: "2nd Floor, Ganesh Plaza, above Ganesh Hyundai Showroom, near Maneja Crossing Road, JD Nagar, Makarpura, Vadodara, Gujarat 390013" }
+            ],
+            Anand: [
+                { hospital: "Zydus Hospitals, Anand", name: "Dr. Ankit Vasava", address: "Anand-Lambhvel Road, Zydus Rd, Anand, Gujarat 388001" }
+            ],
+            Bhavnagar: [
+                { hospital: "HCG Hospitals, Bhavnagar", name: "Dr. Jenil Dholariya", address: "1139 Sir Patini Road, Meghani Cir, Krishna Nagar, Bhavnagar, Gujarat 364001" }
+            ]
+        };
+
+        function showHospitals() {
+            const city = document.getElementById("citySelect").value;
+            const hospitalListDiv = document.getElementById("hospitalList");
+
+            hospitalListDiv.innerHTML = "";
+            if (city && hospitals[city]) {
+                hospitals[city].forEach(hospital => {
+                    hospitalListDiv.innerHTML += `
+                        <div class="hospital-item">
+                            <h4>${hospital.hospital}</h4>
+                            <p><strong>Doctor:</strong> ${hospital.name}</p>
+                            <p><strong>Address:</strong> ${hospital.address}</p>
+                            <button class="view-map-btn" onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(hospital.address)}', '_blank')">View Map</button>
+                        </div>
+                    `;
+                });
+            } else {
+                hospitalListDiv.innerHTML = "<p>Please select a city to view hospitals.</p>";
+            }
+        }
+    </script>
+</body>
+
+</html>

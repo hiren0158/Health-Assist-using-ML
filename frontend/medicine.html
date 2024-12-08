@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthAssist - Medicine Suggestions</title>
+    <style>
+        body {
+            background-image: url('BG.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #3ccaca;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }   
+
+        nav a {
+  display: inline-block; /* Makes links behave like buttons */
+  padding: 5px 10px; /* Adds padding for a button-like look */
+  color: #fff; /* Text color */
+  background-color: transparent; /* Keeps the background transparent */
+  border: 2px solid #fff; /* Matches the border color to the header's text color */
+  border-radius: 10px; /* Rounds the corners */
+  text-decoration: none; /* Removes underline from links */
+  font-size: 1.2rem; /* Adjusts font size */
+  transition: all 0.3s ease; /* Adds smooth transition for hover effect */
+  margin: 0px 10px 0 10px;
+
+  
+}
+
+nav a:hover {
+  background-color: #fff; /* Changes background on hover */
+  color: #3ccaca; /* Matches the text color with the header's background */
+  border-color: #3ccaca; /* Changes border color on hover */
+}
+
+        #medicineScreen {
+            padding: 20px;
+        }
+
+        #medicineForm {
+            background-color: #519595;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        select,
+        #medicineDetails {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .medicine-item {
+            display: flex;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .medicine-item img {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+
+        .medicine-item div {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>HealthAssist - Medicine Suggestions</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="checkup.html">Doctor For You</a>
+            <a href="exercise.html">Exercise Suggestions</a>
+        </nav>
+    </header>
+
+    <main id="medicineScreen">
+        <section id="medicineForm">
+            <h3>Select a Disease to See Medicine Suggestions</h3>
+            <select id="diseaseSelect">
+                <option value="">Select a Disease</option>
+                <option value="diabetes">Diabetes</option>
+                <option value="highbp">High Blood Pressure</option>
+                <option value="fever">Fever</option>
+                <option value="heart">Heart Disease</option>
+                <option value="others">Others</option>
+            </select>
+
+            <div id="medicineDetails"></div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('diseaseSelect').addEventListener('change', function () {
+            const selectedDisease = this.value;
+            const medicineDetails = document.getElementById('medicineDetails');
+            medicineDetails.innerHTML = '';  // Clear any previous content
+
+            if (selectedDisease) {
+                fetchMedicines(selectedDisease);
+            }
+        });
+
+        function fetchMedicines(disease) {
+            const medicineData = {
+                diabetes: [
+                    { name: 'Metformin', description: 'Used to control blood sugar levels', image: 'dia1.jpg' },
+                    { name: 'Insulin', description: 'Helps regulate insulin levels', image: 'dia2.jpg' }
+                ],
+                highbp: [
+                    { name: 'Lisinopril', description: 'Used to treat high blood pressure', image: 'high1.jpeg' },
+                    { name: 'Amlodipine', description: 'Calcium channel blocker for high blood pressure', image: 'high2.jpeg' }
+                ],
+                fever: [
+                    { name: 'Paracetamol', description: 'Used to reduce fever', image: 'pera1.jpeg' },
+                    { name: 'Ibuprofen', description: 'Non-steroidal anti-inflammatory drug', image: 'pera2.jpeg' }
+                ],
+                heart: [
+                    { name: 'Aspirin', description: 'Used to prevent heart attacks', image: 'asp1.jpeg' },
+                    { name: 'Beta-blockers', description: 'Used to reduce heart workload', image: 'asp2.jpeg' }
+                ],
+                others: [
+                    { name: 'Vitamin C', description: 'Boosts immune system', image: 'vitaminC.jpg' },
+                    { name: 'Zinc', description: 'Supports immune health', image: 'zinc.jpg' }
+                ]
+            };
+
+            const medicines = medicineData[disease];
+            if (medicines) {
+                medicines.forEach(medicine => {
+                    const medicineItem = `
+                        <div class="medicine-item">
+                            <img src="${medicine.image}" alt="${medicine.name}">
+                            <div>
+                                <h4>${medicine.name}</h4>
+                                <p>${medicine.description}</p>
+                            </div>
+                        </div>
+                    `;
+                    medicineDetails.innerHTML += medicineItem;
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

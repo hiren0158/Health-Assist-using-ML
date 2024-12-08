@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthAssist - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>HealthAssist</h1>
+        <nav>
+            <a href="medicine.html">Medicine</a>
+            <a href="checkup.html">Checkup</a>
+            <a href="exercise.html">Exercise</a>
+        </nav>
+        <nav2>
+            <a href="emergency.html">Emergency</a>
+        </nav2>
+    </header>
+
+    <main id="homeScreen">
+       
+        <section id="welcomeSection">
+            <h2>Welcome to HealthAssist</h2>
+            <p>Your companion for better health. Predict health conditions, get medical advice, and improve your lifestyle with ease.</p>
+        </section>
+
+       
+        <section id="navigationButtons">
+            <button class="navBtn" data-target="diabetesForm">Diabetes</button>
+            <button class="navBtn" data-target="heartForm">Heart Diseases</button>
+            <button class="navBtn" data-target="parkinsonsForm">Parkinson's</button>
+        </section>
+
+        <!-- Forms Section -->
+        <section id="formSection">
+            <div id="diabetesForm" class="hidden">
+                <h3>Check if you are diabetic</h3>
+                <input type="number" id="pregnancies" placeholder="Number of Pregnancies" required>
+                <input type="number" id="glucose" placeholder="Glucose Level" required>
+                <input type="number" id="blood_pressure" placeholder="Blood Pressure" required>
+                <input type="number" id="skin_thickness" placeholder="Skin Thickness" required>
+                <input type="number" id="insulin" placeholder="Insulin Level" required>
+                <input type="number" id="bmi" placeholder="BMI" required>
+                <input type="number" id="diabetes_pedigree" placeholder="Diabetes Pedigree Function" required>
+                <input type="number" id="age" placeholder="Age" required>
+                <button id="predictDiabetesBtn">Predict</button>
+                <div id="diabetesResult"></div>
+            </div>
+            <div id="heartForm" class="hidden">
+                <h3>Check if you have heart disease</h3>
+                <input type="number" id="age_heart" placeholder="Age" required>
+                <input type="number" id="sex" placeholder="Sex (1 = Male, 0 = Female)" required>
+                <input type="number" id="cp" placeholder="Chest Pain Type (0-3)" required>
+                <input type="number" id="trestbps" placeholder="Resting Blood Pressure" required>
+                <input type="number" id="chol" placeholder="Cholesterol" required>
+                <input type="number" id="fbs" placeholder="Fasting Blood Sugar (1 = True, 0 = False)" required>
+                <input type="number" id="restecg" placeholder="Resting ECG Results (0-2)" required>
+                <input type="number" id="thalach" placeholder="Max Heart Rate Achieved" required>
+                <input type="number" id="exang" placeholder="Exercise Induced Angina (1 = Yes, 0 = No)" required>
+                <input type="number" id="oldpeak" placeholder="ST Depression Induced" required>
+                <input type="number" id="slope" placeholder="Slope of Peak Exercise ST (0-2)" required>
+                <input type="number" id="ca" placeholder="Number of Major Vessels (0-3)" required>
+                <input type="number" id="thal" placeholder="Thal (1-3)" required>
+                <button id="predictHeartBtn">Predict</button>
+                <div id="heartResult"></div>
+            </div>
+            
+            <div id="parkinsonsForm" class="hidden">
+                <h3 class="parkinsons-heading">Check if you may have Parkinson's disease</h3>
+
+                <input type="number" id="mdvpFo" placeholder="MDVP:Fo(Hz)" required>
+    <input type="number" id="mdvpFhi" placeholder="MDVP:Fhi(Hz)" required>
+    <input type="number" id="mdvpFlo" placeholder="MDVP:Flo(Hz)" required>
+    <input type="number" id="mdvpJitter" placeholder="MDVP:Jitter(%)" required>
+    <input type="number" id="mdvpJitterAbs" placeholder="MDVP:Jitter(Abs)" required>
+    <input type="number" id="mdvpRAP" placeholder="MDVP:RAP" required>
+    <input type="number" id="mdvpPPQ" placeholder="MDVP:PPQ" required>
+    <input type="number" id="jitterDDP" placeholder="Jitter:DDP" required>
+    <input type="number" id="mdvpShimmer" placeholder="MDVP:Shimmer" required>
+    <input type="number" id="mdvpShimmerdB" placeholder="MDVP:Shimmer(dB)" required>
+    <input type="number" id="shimmerAPQ3" placeholder="Shimmer:APQ3" required>
+    <input type="number" id="shimmerAPQ5" placeholder="Shimmer:APQ5" required>
+    <input type="number" id="mdvpAPQ" placeholder="MDVP:APQ" required>
+    <input type="number" id="shimmerDDA" placeholder="Shimmer:DDA" required>
+    <input type="number" id="nhr" placeholder="NHR" required>
+    <input type="number" id="hnr" placeholder="HNR" required>
+    <input type="number" id="rpde" placeholder="RPDE" required>
+    <input type="number" id="dfa" placeholder="DFA" required>
+    <input type="number" id="spread1" placeholder="Spread1" required>
+    <input type="number" id="spread2" placeholder="Spread2" required>
+    <input type="number" id="d2" placeholder="D2" required>
+    <input type="number" id="ppe" placeholder="PPE" required>
+                <button id="predictParkinsonsBtn">Predict</button>
+                <div id="parkinsonsResult"></div>
+            </div>
+            
+
+            <div id="heartForm" class="hidden">
+                <h3>Check if you have heart disease</h3>
+                
+                <button id="predictHeartBtn">Predict</button>
+                <div id="heartResult"></div>
+            </div>
+
+            <div id="parkinsonsForm" class="hidden">
+                <h3>Check if you may have Parkinson's disease</h3>
+               
+                <button id="predictParkinsonsBtn">Predict</button>
+                <div id="parkinsonsResult"></div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

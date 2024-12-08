@@ -1,0 +1,157 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('BG.jpg');
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #3ccaca;
+  padding: 20px;
+  text-align: center;
+  position: relative; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+}
+header nav2 {
+  position: absolute; 
+  right: 20px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+header nav2 a {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #fff;
+  background-color: red;
+  border: 2px solid red;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+header nav2 a:hover {
+  background-color: #fff;
+  color: red;
+  border-color: red;
+}
+
+nav a {
+  display: inline-block; 
+  padding: 5px 10px; 
+  color: #fff; 
+  background-color: transparent; 
+  border: 2px solid #fff; 
+  border-radius: 10px; 
+  text-decoration: none; 
+  font-size: 1.2rem; 
+  transition: all 0.3s ease; 
+  margin: 25px 10px 0 10px;
+
+  
+}
+
+nav a:hover {
+  background-color: #fff; 
+  color: #3ccaca; 
+  border-color: #3ccaca; 
+}
+
+
+#homeScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+}
+
+#welcomeSection {
+  text-align: center;
+  background-color: rgba(204, 232, 234, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+#welcomeSection h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: #2c3e50;
+}
+
+#navigationButtons {
+  display: flex;
+  gap: 20px;
+}
+
+.navBtn {
+  padding: 15px 25px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #6cc4c4;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.navBtn:hover {
+  background-color: #2980b9;
+}
+
+.hidden {
+  display: none;
+}
+
+#formSection {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 600px;
+}
+
+input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+#diabetesResult, #heartResult, #parkinsonsResult {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #333;
+}
+.parkinsons-heading {
+  color: rgb(18, 129, 141);
+}
+h3 {
+  color: #297b7b;
+}
+

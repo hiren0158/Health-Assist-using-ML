@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise & Health Suggestions</title>
+    <style>
+        body {
+            background-image: url('BG.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            background-color: #3ccaca;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        
+        nav a {
+  display: inline-block; /* Makes links behave like buttons */
+  padding: 5px 10px; /* Adds padding for a button-like look */
+  color: #fff; /* Text color */
+  background-color: transparent; /* Keeps the background transparent */
+  border: 2px solid #fff; /* Matches the border color to the header's text color */
+  border-radius: 10px; /* Rounds the corners */
+  text-decoration: none; /* Removes underline from links */
+  font-size: 1.2rem; /* Adjusts font size */
+  transition: all 0.3s ease; /* Adds smooth transition for hover effect */
+  margin: 0px 10px 0 10px;
+
+  
+}
+
+nav a:hover {
+  background-color: #fff; /* Changes background on hover */
+  color: #3ccaca; /* Matches the text color with the header's background */
+  border-color: #3ccaca; /* Changes border color on hover */
+}
+
+        main {
+            background-color: rgba(204, 232, 234, 0.9);
+            color: #333;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            justify-content: center;
+            align-items: center;
+            margin-left: 300px ;
+        }
+
+        h3 {
+            font-size: 1.2em;
+            color: #229294;
+            margin-bottom: 20px;
+        }
+
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #9e9797;
+            
+        }
+
+        button {
+            background-color: #57bdbd;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #9c9fa2;
+        }
+
+        .result {
+            margin-top: 30px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            color: #656769;
+            margin-top: 20px;
+        }
+
+        .exercise-item,
+        .diet-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #dfe3e5;
+            border-radius: 5px;
+            border-left: 5px solid #6cc4c4;
+        }
+
+        .exercise-item h4,
+        .diet-item h4 {
+            margin: 0 0 10px;
+            color: #37a3a7;
+            font-size: 1em;
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>HealthAssist - Exercise & Health Suggestions</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="checkup.html">Doctor</a>
+            <a href="exercise.html">Exercise Suggestions</a>
+        </nav>
+    </header>
+    <main>
+        <h3>Select a Disease to Get Exercise & Diet Suggestions</h3>
+        <select id="diseaseSelect">
+            <option value="">Select Disease</option>
+            <option value="diabetes">Diabetes</option>
+            <option value="highbp">High Blood Pressure</option>
+            <option value="fever">Fever</option>
+            <option value="heart">Heart Disease</option>
+            <option value="arthritis">Arthritis</option>
+            <option value="obesity">Obesity</option>
+            <option value="asthma">Asthma</option>
+            <option value="anxiety">Anxiety</option>
+        </select>
+        <button onclick="showRecommendations()">Show Recommendations</button>
+
+        <div id="recommendations" class="result"></div>
+    </main>
+
+    <script>
+        const recommendations = {
+            diabetes: {
+                exercises: [
+                    { name: "Walking", description: "30 minutes daily to help regulate blood sugar levels." },
+                    { name: "Cycling", description: "Low-impact exercise to improve cardiovascular health." },
+                    { name: "Yoga", description: "Reduces stress and improves insulin sensitivity." }
+                ],
+                diet: [
+                    { item: "Low-carb diet", description: "Reduces sugar spikes." },
+                    { item: "High-fiber foods", description: "Improves blood sugar control." }
+                ]
+            },
+            highbp: {
+                exercises: [
+                    { name: "Aerobic exercises", description: "Improves heart health and lowers blood pressure." },
+                    { name: "Swimming", description: "Low-impact workout to maintain blood pressure." },
+                    { name: "Breathing exercises", description: "Helps with stress management." }
+                ],
+                diet: [
+                    { item: "Low-sodium diet", description: "Reduces blood pressure levels." },
+                    { item: "Potassium-rich foods", description: "Helps balance blood pressure." }
+                ]
+            },
+            fever: {
+                exercises: [
+                    { name: "Light stretching", description: "Gentle stretches to avoid stiffness." },
+                    { name: "Breathing exercises", description: "Promotes relaxation." }
+                ],
+                diet: [
+                    { item: "Fluids", description: "Stay hydrated with water and herbal teas." },
+                    { item: "Broth soups", description: "Easily digestible nutrition." }
+                ]
+            },
+            heart: {
+                exercises: [
+                    { name: "Cardio exercises", description: "Improves heart health." },
+                    { name: "Meditation", description: "Reduces stress and blood pressure." },
+                    { name: "Strength training", description: "Supports heart function." }
+                ],
+                diet: [
+                    { item: "Leafy greens", description: "Rich in vitamins for heart health." },
+                    { item: "Omega-3 fatty acids", description: "Good for heart health." }
+                ]
+            },
+            arthritis: {
+                exercises: [
+                    { name: "Swimming", description: "Reduces joint impact." },
+                    { name: "Yoga", description: "Improves flexibility and reduces stiffness." }
+                ],
+                diet: [
+                    { item: "Anti-inflammatory foods", description: "Reduces inflammation." },
+                    { item: "Omega-3 rich foods", description: "Supports joint health." }
+                ]
+            },
+            obesity: {
+                exercises: [
+                    { name: "Cardio workouts", description: "Burns calories effectively." },
+                    { name: "Strength training", description: "Helps build muscle mass." },
+                    { name: "HIIT", description: "Efficient calorie burning." }
+                ],
+                diet: [
+                    { item: "High-protein foods", description: "Promotes satiety and supports weight loss." },
+                    { item: "Low-calorie, high-fiber foods", description: "Helps control hunger." }
+                ]
+            },
+            asthma: {
+                exercises: [
+                    { name: "Breathing exercises", description: "Improves lung capacity." },
+                    { name: "Walking", description: "Low-intensity to avoid asthma triggers." }
+                ],
+                diet: [
+                    { item: "Antioxidant-rich foods", description: "Supports lung health." },
+                    { item: "Omega-3 fatty acids", description: "May reduce inflammation in airways." }
+                ]
+            },
+            anxiety: {
+                exercises: [
+                    { name: "Meditation", description: "Promotes calm and focus." },
+                    { name: "Walking", description: "Relieves stress and anxiety." },
+                    { name: "Deep breathing", description: "Helps manage anxious feelings." }
+                ],
+                diet: [
+                    { item: "Magnesium-rich foods", description: "Supports nervous system health." },
+                    { item: "Chamomile tea", description: "Natural calming effect." }
+                ]
+            }
+        };
+
+        function showRecommendations() {
+            const disease = document.getElementById("diseaseSelect").value;
+            const recommendationsDiv = document.getElementById("recommendations");
+
+            recommendationsDiv.innerHTML = "";
+            if (disease && recommendations[disease]) {
+                const diseaseInfo = recommendations[disease];
+
+                recommendationsDiv.innerHTML += "<h3 class='section-title'>Exercises</h3>";
+                diseaseInfo.exercises.forEach(exercise => {
+                    recommendationsDiv.innerHTML += `<div class="exercise-item"><h4>${exercise.name}</h4><p>${exercise.description}</p></div>`;
+                });
+
+                recommendationsDiv.innerHTML += "<h3 class='section-title'>Diet Recommendations</h3>";
+                diseaseInfo.diet.forEach(dietItem => {
+                    recommendationsDiv.innerHTML += `<div class="diet-item"><h4>${dietItem.item}</h4><p>${dietItem.description}</p></div>`;
+                });
+            } else {
+                recommendationsDiv.innerHTML = "<p>Please select a disease to view suggestions.</p>";
+            }
+        }
+    </script>
+</body>
+
+</html>
